@@ -1,0 +1,94 @@
+.projects {
+  padding-top: 74px;
+
+  &__title {
+    margin-bottom: 125px;
+    color: #272727;
+    text-align: center;
+    font-size: 25px;
+    font-weight: 700;
+    line-height: 131.4%;
+    letter-spacing: 0.875px;
+  }
+
+  &__inner {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 95px;
+  }
+}
+
+.card-project {
+  max-width: 534px;
+  padding: 18px 29px 44px 29px;
+  border-radius: 13.259px;
+  background: rgba(231, 231, 231, 0.2);
+
+  &__image {
+    width: 476px;
+    height: 288px;
+    margin-bottom: 70px;
+    border-radius: 13px;
+  }
+
+  &__name {
+    display: block;
+    margin-bottom: 23px;
+    color: #272727;
+    font-size: 23px;
+    font-weight: 800;
+    line-height: 131.4%;
+    letter-spacing: 0.805px;
+    text-transform: uppercase;
+  }
+
+  &__list {
+    margin-bottom: 68px;
+    padding-left: 23px;
+    list-style-type: disc;
+  }
+}
+
+@media (max-width: 1190px) {
+  .projects {
+    padding-top: 65px;
+    
+    &__inner {
+      justify-content: space-around;
+      gap: 30px;
+    }
+
+    &__title {
+      margin-bottom: 70px;
+    }
+  }
+  .card-project {
+    max-width: unset;
+    width: 100%;
+  }
+}
+
+@media (max-width: 560px) {
+  .card-project {
+    &__image {
+      width: 285px;
+      height: 172px;
+      margin: 0 auto 40px;
+    }
+
+    &__name {
+      font-size: 14px;
+    }
+
+    &__list {
+      margin-bottom: 21px;
+      font-size: 13px;
+    }
+
+    .button-alt {
+      width: 170px;
+      padding: 9px 23px;
+      font-size: 10px;
+    }
+  }
+}

@@ -1,0 +1,63 @@
+.text {
+  &--vbig {
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 131%;
+    letter-spacing: 1.26px;
+  }
+
+  &--big {
+    font-weight: 700;
+    font-size: 31px;
+    line-height: 131%;
+  }
+
+  &--normal {
+    font-weight: 700;
+    font-size: 25px;
+    line-height: 131%;
+  }
+
+  &--regular {
+    font-weight: 700;
+    font-size: 23px;
+    line-height: 131%;
+    text-align: center;
+  }
+
+  &--italic {
+    font-size: 20px;
+    font-style: italic;
+    font-weight: 700;
+    line-height: 150%;
+    letter-spacing: 0.7px;
+  }
+
+  &--small {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 150%;
+  }
+
+  &--vsmall {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 131%;
+  }
+
+  &--orange {
+    color: #ff8900;
+  }
+}
+
+@media (max-width: 768px) {
+  .text {
+    &--big {
+      font-size: 22px;
+    }
+
+    &--vsmall {
+      font-size: 14px;
+    }
+  }
+}

@@ -1,0 +1,121 @@
+.nav {
+  &__list {
+    display: flex;
+    gap: 40px;
+  }
+
+  &__link {
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 150%;
+    letter-spacing: 0.035em;
+    transition: text-shadow 0.3s linear;
+
+    &:hover {
+      text-shadow: 0 0 15px #ff8900;
+    }
+  }
+}
+
+@media (max-width: 1140px) {
+  .nav {
+    &__link {
+      font-size: 14px;
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .nav {
+    &__list {
+      gap: 20px;
+    }
+
+    &__link {
+      font-size: 14px;
+    }
+  }
+}
+
+@media (max-width: 830px) {
+  .nav {
+    &__list {
+      gap: 12px;
+    }
+
+    &__link {
+      font-size: 13px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .nav {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+  }
+}
+
+@media (max-width: 706px) {
+  .nav__link {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 640px) {
+  .nav__link {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 570px) {
+  .nav__link {
+    font-size: 8px;
+  }
+}
+
+@media (max-width: 580px) {
+  .header .nav {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translateX(100%);
+    transition: transform 0.2s linear;
+    padding: 40px;
+    padding-right: 60px;
+    border-radius: 15px;
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+    box-shadow: 0 0 5px #eeeeee;
+    background-color: rgba($color: #eeeeee, $alpha: 0.95);
+
+    &__list {
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    &__item {
+      position: relative;
+
+      &::before {
+        content: "";
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 50%;
+        height: 2px;
+        background-color: #000;
+      }
+    }
+
+    &__link {
+      font-size: 12px;
+    }
+
+    &--active {
+    transform: translateX(0);
+    }
+  }
+}

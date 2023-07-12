@@ -1,0 +1,78 @@
+.about {
+  position: relative;
+  padding-bottom: 123px;
+  background-image: url("@img/about/bg.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  &::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 33%;
+    background-image: url("@img/about/clouds.png");
+    background-position: bottom;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  &__content {
+    max-width: 754px;
+    padding: 64px 33px 38px 18px;
+    border-radius: 36px;
+    background-color: #fff;
+  }
+
+  &__title {
+    margin-bottom: 25px;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 131.4%;
+    letter-spacing: 1.019px;
+  }
+}
+
+.about__content {
+  position: relative;
+
+  p {
+    font-size: 15px;
+    font-weight: 500;
+
+    span {
+      font-weight: 700;
+    }
+  }
+
+  p:not(:last-child) {
+    margin-bottom: 15px;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 20%;
+    right: -70%;
+    width: 617px;
+    height: 550px;
+    background-image: url("@img/about/trees.png");
+  }
+}
+
+@media (max-width: 768px) {
+  .about__content p {
+    font-size: 10px;
+  }
+
+  .about__content::after {
+    right: -564px;
+  }
+
+  .about__title {
+    font-size: 20px;
+  }
+}

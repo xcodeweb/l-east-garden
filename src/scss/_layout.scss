@@ -1,0 +1,25 @@
+// Layout settings
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  max-height: unset;
+  min-width: 100%;
+  overflow: hidden;
+
+  .main {
+    flex-grow: 1;
+  }
+
+  // display: grid;
+  // grid-template-rows: auto 1fr auto;
+}
+
+.container,
+[class*="__container"] {
+  max-width: 1197px;
+  padding: 0 10px;
+  margin: 0 auto;
+}
+

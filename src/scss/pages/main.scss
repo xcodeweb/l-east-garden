@@ -1,0 +1,43 @@
+@import "../fonts";
+@import "../vars";
+@import "../layout";
+@import "../base";
+
+// Page elements
+@import "../components/text";
+@import "../components/button";
+@import "../components/nav";
+
+// Page sections
+@import "../sections/header";
+@import "../sections/hero";
+@import "../sections/advantages";
+@import "../sections/about";
+@import "../sections/projects";
+@import "../sections/form";
+@import "../sections/footer";
+
+// Page styles
+
+.body {
+  font-family: "Gilroy", sans-serif;
+  color: #272727;
+}
+
+.wrapper {
+  position: relative;
+}
+
+.modal {
+  position: fixed;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 100vh;
+  background-color: rgba(#000, 0.6);
+}

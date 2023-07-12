@@ -1,0 +1,26 @@
+@@include("html/head.html", {"lang": "ru", "title": "Восточный сад", "style": "main" })
+
+<body class="body">
+
+  <div class="wrapper">
+    <div class="modal">
+      <h2>This is the modal</h2>
+    </div>
+
+    @@include("html/sections/header.html",{})
+
+    <main class="main">
+      @@include("html/sections/advantages.html")
+      @@include("html/sections/about.html")
+      @@include("html/sections/projects.html")
+      @@include("html/sections/form.html")
+    </main>
+
+    @@include("html/sections/footer.html",{})
+
+  </div>
+
+  <script src="./js/app.min.js"></script>
+</body>
+
+</html>
