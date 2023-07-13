@@ -22,6 +22,10 @@
 .body {
   font-family: "Gilroy", sans-serif;
   color: #272727;
+
+  &--modal {
+    overflow: hidden;
+  }
 }
 
 .wrapper {
@@ -40,4 +44,8 @@
   left: 0;
   height: 100vh;
   background-color: rgba(#000, 0.6);
+
+  &--active {
+    display: flex;
+  }
 }

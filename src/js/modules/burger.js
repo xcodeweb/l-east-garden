@@ -1,35 +1,55 @@
 /**
- * @param {String} selector - css selector for burger element
- * @param {Function} callback - callback for click event
- * @param {boolean} test - on/off log mode
+ * Класс для инициализации меню бургер
  */
 
 class Burger {
-  constructor(selector, callback, test) {
-    this.burger = document.querySelector(selector);
-    this.callback = callback;
+  /**
+   * @typedef {Object} BurgerOptions
+   * @property {HTMLElement} burger - Элемент кнопки-бургера
+   * @property {HTMLElement} menu - Элемент меню
+   * @property {string} menuActive - Класс для активного состояния меню (без точки)
+   */
+
+  /**
+   * Конструктор класса Burger
+   * @param {BurgerOptions} options Объект с опциями для инициализации
+   * @param {boolean} test Флаг для отладки
+   */
+  constructor(options, test) {
+    this.options = options;
+    this.burger = document.querySelector(options.burger);
+    this.menu = document.querySelector(options.menu);
+    this.menuActive = options.menuActive;
     this.test = test;
-    this.init = this.init.bind(this);
     this.init();
   }
 
-  init() {
+  init = () => {
     if (this.test) {
       console.log(this.burger);
       console.log(this);
     }
 
     const burger = this.burger;
-    burger.addEventListener("click", this.callback);
-  }
+    burger.addEventListener("click", this.toggleMenu);
+
+    document.addEventListener("click", this.closeMenu);
+  };
+
+  toggleMenu = () => {
+    this.menu.classList.toggle(this.menuActive);
+  };
+
+  closeMenu = (event) => {
+    const target = event.target;
+    if (!target.closest(this.options.burger) && !target.closest(this.options.menu)) {
+      this.menu.classList.remove(this.menuActive);
+    }
+  };
 }
 
-const selectors = {
+const burger = new Burger({
   burger: ".burger",
   menu: ".nav",
   menuActive: "nav--active"
-};
-
-const burger = new Burger(selectors.burger, (e) => {
-  document.querySelector(selectors.menu).classList.toggle(selectors.menuActive);
 });

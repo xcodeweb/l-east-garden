@@ -1,20 +1,36 @@
 /**
-  @param {HTMLElement} element - target element for animation
-  @param {String} activeClass - class with animation
-  @returns {null} nothing return
-*/
+ * Класс для анимирования элементов на данной странице
+ */
 
-function fadeRight(element, activeClass) {
-  const observer = new IntersectionObserver((event) => {
-    event.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add(activeClass);
-        observer.unobserve(entry.target);
-      }
+class Animate {
+  /**
+   * Конструктор класса Animate
+   * @param {HTMLElement} element Элемент для анимирования
+   * @param {String} className Название класса анимации
+   */
+  constructor(element, activeClass) {
+    this.element = element;
+    this.activeClass = activeClass;
+    this.observer = this.observer.bind(this);
+    this.observer();
+  }
+
+  observer() {
+    const element = this.element;
+    const activeClass = this.activeClass;
+    const observer = new IntersectionObserver((event) => {
+      event.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add(activeClass);
+          observer.unobserve(entry.target);
+        }
+      });
     });
-  });
 
-  observer.observe(element);
+    observer.observe(element);
+  }
 }
 
-export default fadeRight;
+const element = document.querySelector(".inputs");
+const activeClass = "inputs--active";
+const fadeRightInputs = new Animate(element, activeClass);
