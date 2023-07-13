@@ -1,7 +1,6 @@
 /**
  * Класс для инициализации меню бургер
  */
-
 class Burger {
   /**
    * @typedef {Object} BurgerOptions
@@ -17,7 +16,7 @@ class Burger {
    */
   constructor(options, test) {
     this.options = options;
-    this.burger = document.querySelector(options.burger);
+    this.burger = document.querySelector(options.burger); // @@@
     this.menu = document.querySelector(options.menu);
     this.menuActive = options.menuActive;
     this.test = test;

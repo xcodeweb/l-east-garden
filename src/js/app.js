@@ -1,5 +1,6 @@
 import "./tools/test-webp.js";
 
-import fadeRight from "./modules/animate.js";
-
-import Burger from "./modules/burger.js";
+// Modules
+import "./modules/animate.js";
+import "./modules/burger.js";
+import "./modules/modal.js";
