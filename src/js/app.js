@@ -4,3 +4,4 @@ import "./tools/test-webp.js";
 import "./modules/animate.js";
 import "./modules/burger.js";
 import "./modules/modal.js";
+import "./modules/validate.js";
