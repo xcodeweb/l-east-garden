@@ -16,7 +16,7 @@ import {
   deleteImages,
   deleteFonts,
   deleteSvg,
-  deleteSvgStack
+  deleteSvgStack,
 } from "./gulp/tasks/del.js";
 // HTML module
 import { html, pug } from "./gulp/tasks/html.js";
@@ -40,14 +40,14 @@ global.app = {
   path,
   gulp,
   plugins,
-  config
+  config,
 };
 
 global.mode = {
   html,
   pug,
   scss,
-  less
+  less,
 };
 
 const htmlMode = config.mode.html;
@@ -55,16 +55,30 @@ const styleMode = config.mode.style;
 
 function overwatch() {
   // Watch HTML
-  gulp.watch(app.path.watch[htmlMode], { delay: 800 }, gulp.series(deleteHTML, global.mode[htmlMode]));
+  gulp.watch(
+    app.path.watch[htmlMode],
+    { delay: 800 },
+    gulp.series(deleteHTML, global.mode[htmlMode])
+  );
   // Watch CSS
-  gulp.watch(app.path.watch[styleMode], { delay: 800 }, gulp.series(deleteCss, global.mode[styleMode]));
+  gulp.watch(
+    app.path.watch[styleMode],
+    { delay: 800 },
+    gulp.series(deleteCss, global.mode[styleMode])
+  );
   // Watch JS
   gulp.watch(app.path.watch.js, gulp.series(deleteJs, scripts));
   // Watch images
   if (config.clearImages) {
-    gulp.watch(app.path.watch.img, gulp.series(deleteImages, config.convertImages ? images : imagesNoWebp));
+    gulp.watch(
+      app.path.watch.img,
+      gulp.series(deleteImages, config.convertImages ? images : imagesNoWebp)
+    );
   } else {
-    gulp.watch(app.path.watch.img, gulp.series(config.convertImages ? images : imagesNoWebp));
+    gulp.watch(
+      app.path.watch.img,
+      gulp.series(config.convertImages ? images : imagesNoWebp)
+    );
   }
   // Watch sprites
   gulp.watch(app.path.watch.svg, gulp.series(deleteSvg, createSvgSprites));
