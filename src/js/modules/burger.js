@@ -8,15 +8,17 @@ class Burger {
    * @property {HTMLElement} menu - Элемент меню
    * @property {string} menuActive - Класс для активного состояния меню (без точки)
    */
-
   /**
    * Конструктор класса Burger
    * @param {BurgerOptions} options Объект с опциями для инициализации
    * @param {boolean} test Флаг для отладки
    */
   constructor(options, test) {
+    /**
+     * @type {BurgerOptions}
+     */
     this.options = options;
-    this.burger = document.querySelector(options.burger); // @@@
+    this.burger = document.querySelector(options.burger);
     this.menu = document.querySelector(options.menu);
     this.menuActive = options.menuActive;
     this.test = test;

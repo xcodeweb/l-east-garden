@@ -6,7 +6,7 @@ class Animate {
   /**
    * Конструктор класса Animate
    * @param {HTMLElement} element Элемент для анимирования
-   * @param {String} className Название класса анимации
+   * @param {String} activeClass Класс анимации (без точки)
    */
   constructor(element, activeClass) {
     this.element = element;

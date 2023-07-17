@@ -1,0 +1,162 @@
+.main-form {
+  max-width: 600px;
+  padding: 40px;
+  border-radius: 15px;
+  font-weight: 500;
+  font-size: 18px;
+  background-color: #fff;
+
+  &__close {
+    img {
+      display: block;
+      margin-left: auto;
+      cursor: pointer;
+    }
+  }
+
+  &__row {
+    display: flex;
+    justify-content: space-between;
+    gap: 60px;
+  }
+
+  &__title {
+    margin-bottom: 10px;
+  }
+
+  &__item {
+    margin-bottom: 15px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    text-align: left;
+  }
+
+  &__label {
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  &__input {
+    width: 220px;
+    height: 45px;
+    padding: 15px 20px;
+    border: 1px solid #989898;
+    border-radius: 20px;
+    background-color: #eeeeee;
+    resize: vertical;
+  }
+}
+
+.options {
+  &__input {
+    display: none;
+  }
+
+  &__label {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    height: 24px;
+  }
+
+  &__label::before {
+    content: "";
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+    border-radius: 50%;
+    background-color: #9e9d9d;
+  }
+
+  &__label::after {
+    content: "";
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 16px;
+    height: 16px;
+    transform: scale(0);
+    transition: transform 0.3s ease;
+    border-radius: 50%;
+    background-color: #ff8900;
+  }
+
+  &__input:checked + &__label::after {
+    transform: scale(1);
+  }
+}
+
+.file {
+  &__label {
+    display: inline-block;
+    cursor: pointer;
+  }
+
+  &__button {
+    padding: 20px;
+    font-family: inherit;
+    font-size: 16px;
+    border-radius: 15px;
+    background-color: #ff8900;
+    pointer-events: none;
+  }
+
+  &__input {
+    display: none;
+  }
+}
+
+.agreement {
+  &__checkbox {
+    display: none;
+  }
+
+  &__label {
+    position: relative;
+    display: inline-flex;
+  }
+
+  &__label::before {
+    content: "";
+    align-self: flex-start;
+    flex: 0 0 24px;
+    height: 24px;
+    margin-top: 4px;
+    margin-right: 10px;
+    background-color: #eeeeee;
+  }
+
+  &__label::after {
+    content: "";
+    position: absolute;
+    top: 8px;
+    left: 4px;
+    width: 16px;
+    height: 16px;
+    transform: scale(0);
+    transition: transform 0.3s ease;
+    border-radius: 5px;
+    background-color: #ff8900;
+  }
+
+  &__checkbox:checked + &__label::after {
+    transform: scale(1);
+  }
+
+  &__label a {
+    text-decoration-line: underline;
+    color: #ff8900;
+  }
+}
+
+@media (max-width: 500px) {
+  .main-form {
+    width: 100%;
+    padding: 15px;
+
+    &__row {
+      flex-direction: column;
+      gap: 15px;
+    }
+  }
+}

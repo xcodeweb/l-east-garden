@@ -1,0 +1,61 @@
+<form id="main-form" class="main-form" action="#">
+  <div class="main-form__close">
+    <img class="main-form__close-btn" src="@img/close.svg" alt="Close modal">
+  </div>
+
+  <h1 class="main-form__title">Заполните заявку</h1>
+
+  <div class="main-form__row">
+    <div class="main-form__column">
+      <div class="main-form__item">
+        <label class="main-form__label" for="formName">Имя:</label>
+        <input id="formName" class="main-form__input" type="text" name="name" required />
+      </div>
+
+      <div class="main-form__item">
+        <label class="main-form__label" for="formEmail">Телефон:</label>
+        <input id="formEmail" class="main-form__input" type="tel" name="phone" required />
+      </div>
+    </div>
+
+    <div class="main-form__column">
+      <div class="main-form__item">
+        <div class="main-form__title">Требуется ли разработка проекта с нуля:</div>
+        <div class="options">
+          <div class="options__item">
+            <input id="yesZeroProject" class="options__input" type="radio" name="project" value="yes" checked />
+            <label class="options__label" for="yesZeroProject"><span>Да</span></label>
+          </div>
+          <div class="options__item">
+            <input id="noZeroProject" class="options__input" type="radio" name="project" value="no" />
+            <label class="options__label" for="noZeroProject"><span>Нет</span></label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="main-form__item">
+    <div class="main-form__label">Загрузите примеры дизайна если они имеются:</div>
+    <div class="file">
+      <div class="file__item">
+        <input id="formImage" class="file__input" accept=".jpg, .png" type="file" name="image" />
+        <label class="file__label" for="formImage">
+          <button class="file__button">Выбрать</button>
+        </label>
+      </div>
+      <div class="file__preview"></div>
+    </div>
+  </div>
+
+  <div class="main-form__item">
+    <div class="agreement">
+      <input id="formAgreement" class="agreement__checkbox" type="checkbox" value="agree" name="agreement" />
+      <label class="agreement__label" for="formAgreement">
+        <span>Согласен на обработку персональных данных в соответствии с <a href="#">условиями</a></span>
+      </label>
+    </div>
+  </div>
+
+  <button class="main-form__button button-alt" type="submit">Отправить</button>
+</form>

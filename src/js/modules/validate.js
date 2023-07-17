@@ -25,6 +25,7 @@ class Form {
 
       const formData = new FormData(form);
       const data = [...formData];
+      let checkAgree;
 
       const results = [];
 
@@ -36,7 +37,14 @@ class Form {
         if (field[0] === "phone") {
           results.push(this.validatePhone(field[1]));
         }
+
+        if (field[0] === "agreement") {
+          results.push(this.validateAgreement(field[1]));
+          checkAgree = true;
+        }
       });
+
+      results.push(checkAgree);
 
       const validateResult = results.every((i) => i === true);
 
@@ -68,6 +76,14 @@ class Form {
     }
   };
 
+  validateAgreement = (value) => {
+    if (value === "agree") {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   fetchForm = async (data) => {
     const server = this.server;
 
@@ -86,8 +102,23 @@ class Form {
   };
 }
 
-const form = document.querySelector(".inputs");
+const formOnPage = document.querySelector(".inputs");
 
-const validator = new Form(form, "server", () => {
-  console.log("Form sended");
-}, true);
+const pageForm = new Form(
+  formOnPage,
+  "test server",
+  () => {
+    console.log("Form sended");
+  },
+  true
+);
+
+const formInModal = document.querySelector(".main-form");
+const modalForm = new Form(
+  formInModal,
+  "test server",
+  () => {
+    console.log("Modal form sended");
+  },
+  true
+);

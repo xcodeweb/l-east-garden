@@ -61,6 +61,13 @@ address {
 
 // Clear button in input
 
+button {
+  font-family: inherit;
+  font-weight: inherit;
+  font-size: inherit;
+  color: inherit;
+}
+
 input[type="text"]::-ms-clear {
   display: none;
   width: 0;

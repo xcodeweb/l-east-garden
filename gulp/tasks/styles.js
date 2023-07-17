@@ -31,7 +31,8 @@ const sass = gulpSass(mainSass);
 // Gulp func for sass/scss
 export const scss = () => {
   return app.gulp
-    .src(app.path.src.scss, { sourcemaps: app.isDev })
+    .src(app.path.src.scss)
+    .pipe(app.plugins.if(!app.isBuild, sourcemaps.init()))
     .pipe(
       app.plugins.plumber(
         app.plugins.notify.onError({
@@ -45,6 +46,27 @@ export const scss = () => {
         outputStyle: "expanded"
       })
     )
+    .pipe(
+      app.plugins.if(
+        !app.config.mode.framework,
+        g_autoprefixer({
+          grid: true,
+          cascade: true
+        })
+      )
+    )
+    .pipe(
+      app.plugins.if(
+        app.config.mode.framework === "tailwind",
+        postcss([
+          tailwindcss(tailwindConfig),
+          autoprefixer({
+            grid: true,
+            cascade: true
+          })
+        ])
+      )
+    )
     .pipe(app.plugins.if(!app.isBuild, sourcemaps.write()))
     .pipe(app.plugins.if(app.isBuild, groupQueries()))
     .pipe(
@@ -56,6 +78,32 @@ export const scss = () => {
         })
       )
     )
+    .pipe(app.plugins.if(app.isBuild, cleanCss()))
+    .pipe(
+      rename({
+        extname: ".min.css"
+      })
+    )
+    .pipe(app.plugins.replace(/@img\//g, "../img/"))
+    .pipe(app.plugins.replace(/@vid\//g, "../video/"))
+    .pipe(app.gulp.dest(app.path.build.css))
+    .pipe(app.plugins.browsersync.stream());
+};
+
+// Gulp func for LESS
+export const less = () => {
+  return app.gulp
+    .src(app.path.src.less)
+    .pipe(app.plugins.if(!app.isBuild, sourcemaps.init()))
+    .pipe(
+      app.plugins.plumber(
+        app.plugins.notify.onError({
+          title: "LESS",
+          message: "Error: <%= error.message %>"
+        })
+      )
+    )
+    .pipe(gulpLess())
     .pipe(
       app.plugins.if(
         !app.config.mode.framework,
@@ -65,14 +113,6 @@ export const scss = () => {
         })
       )
     )
-    .pipe(app.plugins.if(app.isBuild, cleanCss()))
-    .pipe(
-      rename({
-        extname: ".min.css"
-      })
-    )
-    .pipe(app.plugins.replace(/@img\//g, "../img/"))
-    .pipe(app.plugins.replace(/@vid\//g, "../video/"))
     .pipe(
       app.plugins.if(
         app.config.mode.framework === "tailwind",
@@ -85,24 +125,7 @@ export const scss = () => {
         ])
       )
     )
-    .pipe(app.gulp.dest(app.path.build.css))
-    .pipe(app.plugins.browsersync.stream());
-};
-
-// Gulp func for LESS
-export const less = () => {
-  return app.gulp
-    .src(app.path.src.less, { sourcemaps: app.isDev })
-    .pipe(
-      app.plugins.plumber(
-        app.plugins.notify.onError({
-          title: "LESS",
-          message: "Error: <%= error.message %>"
-        })
-      )
-    )
     .pipe(app.plugins.if(!app.isBuild, sourcemaps.write()))
-    .pipe(gulpLess())
     .pipe(app.plugins.if(app.isBuild, groupQueries()))
     .pipe(
       app.plugins.if(
@@ -113,15 +136,6 @@ export const less = () => {
         })
       )
     )
-    .pipe(
-      app.plugins.if(
-        !app.config.mode.framework,
-        g_autoprefixer({
-          grid: true,
-          cascade: true
-        })
-      )
-    )
     .pipe(app.plugins.if(app.isBuild, cleanCss()))
     .pipe(
       rename({
@@ -130,18 +144,6 @@ export const less = () => {
     )
     .pipe(app.plugins.replace(/@img\//g, "../img/"))
     .pipe(app.plugins.replace(/@vid\//g, "../video/"))
-    .pipe(
-      app.plugins.if(
-        app.config.mode.framework === "tailwind",
-        postcss([
-          tailwindcss(tailwindConfig),
-          autoprefixer({
-            grid: true,
-            cascade: true
-          })
-        ])
-      )
-    )
     .pipe(app.gulp.dest(app.path.build.css))
     .pipe(app.plugins.browsersync.stream());
 };

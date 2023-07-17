@@ -1,19 +1,12 @@
-@@include("html/head.html", {"lang": "ru", "title": "Восточный сад", "style": "main" })
+<!DOCTYPE html>
+<html lang="ru">
+@@include("html/head.html", {"title": "Восточный сад", "style": "main" })
 
 <body class="body">
-
   <div class="wrapper">
-    <div class="modal">
-      <div class="modal__phone">
-        <p>Это модальное окно</p>
-        <p>Нажмите в любом месте экрана для закрытия</p>
-      </div>
-    </div>
-
     @@include("html/sections/header.html",{})
 
     <main class="main">
-      @@include("html/sections/advantages.html")
       @@include("html/sections/about.html")
       @@include("html/sections/projects.html")
       @@include("html/sections/form.html")
@@ -21,8 +14,12 @@
 
     @@include("html/sections/footer.html",{})
 
+    <div class="modal">
+      <div class="modal__body">
+        @@include("html/sections/main-form.html")
+      </div>
+    </div>
   </div>
-
   <script src="./js/app.min.js"></script>
 </body>
 
