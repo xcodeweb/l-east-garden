@@ -8,8 +8,6 @@ import gulpLess from "gulp-less";
 import rename from "gulp-rename";
 // gulp-clean-css: https://www.npmjs.com/package/gulp-clean-css
 import cleanCss from "gulp-clean-css";
-// gulp-webpcssfix: https://www.npmjs.com/package/gulp-webpcssfix
-import webpcss from "gulp-webpcssfix";
 // autoprefixer: https://www.npmjs.com/package/autoprefixer
 import autoprefixer from "autoprefixer";
 // gulp-autoprefixer: https://www.npmjs.com/package/gulp-autoprefixer
@@ -69,15 +67,6 @@ export const scss = () => {
     )
     .pipe(app.plugins.if(!app.isBuild, sourcemaps.write()))
     .pipe(app.plugins.if(app.isBuild, groupQueries()))
-    .pipe(
-      app.plugins.if(
-        app.config.styleWebp,
-        webpcss({
-          webpClass: ".webp",
-          noWebpClass: ".no-webp"
-        })
-      )
-    )
     .pipe(app.plugins.if(app.isBuild, cleanCss()))
     .pipe(
       rename({
@@ -127,15 +116,6 @@ export const less = () => {
     )
     .pipe(app.plugins.if(!app.isBuild, sourcemaps.write()))
     .pipe(app.plugins.if(app.isBuild, groupQueries()))
-    .pipe(
-      app.plugins.if(
-        app.config.htmlWebp,
-        webpcss({
-          webpClass: ".webp",
-          noWebpClass: ".no-webp"
-        })
-      )
-    )
     .pipe(app.plugins.if(app.isBuild, cleanCss()))
     .pipe(
       rename({

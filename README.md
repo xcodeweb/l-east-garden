@@ -1,4 +1,4 @@
-https://cx-code-web.github.io/east-garden
+https://xcodeweb.github.io/l-east-garden
 
 # Верстка
 
